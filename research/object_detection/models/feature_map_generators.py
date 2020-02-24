@@ -89,7 +89,7 @@ def create_conv_block(
     layers.append(
         tf.keras.layers.SeparableConv2D(
             depth, [kernel_size, kernel_size],
-            depth_multiplier=1,
+            depth_multiplier=0.90,
             padding=padding,
             strides=stride,
             name=layer_name + '_depthwise_conv',
