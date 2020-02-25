@@ -122,7 +122,7 @@ class MobilenetV2Test(tf.test.TestCase):
       mobilenet_v2.mobilenet(
           tf.compat.v1.placeholder(tf.float32, (10, 224, 224, 2)),
           conv_defs=mobilenet_v2.V2_DEF,
-          depth_multiplier=0.1)
+          depth_multiplier=0.90)
       s = [op.outputs[0].get_shape().as_list()[-1] for op in find_ops('Conv2D')]
       s = set(s)
       self.assertSameElements(s, [32, 192, 128, 1001])
