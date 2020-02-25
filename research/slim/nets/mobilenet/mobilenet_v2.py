@@ -106,7 +106,7 @@ V2_DEF_GROUP_NORM['defaults'] = {
 @slim.add_arg_scope
 def mobilenet(input_tensor,
               num_classes=1001,
-              depth_multiplier=1.0,
+              depth_multiplier=0.90,
               scope='MobilenetV2',
               conv_defs=None,
               finegrain_classification_mode=False,
