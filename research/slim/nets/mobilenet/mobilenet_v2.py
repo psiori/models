@@ -106,7 +106,7 @@ V2_DEF_GROUP_NORM['defaults'] = {
 @slim.add_arg_scope
 def mobilenet(input_tensor,
               num_classes=1001,
-              depth_multiplier=0.90,
+              depth_multiplier=0.50,
               scope='MobilenetV2',
               conv_defs=None,
               finegrain_classification_mode=False,
@@ -173,6 +173,7 @@ def mobilenet(input_tensor,
     depth_args['min_depth'] = min_depth
   if divisible_by is not None:
     depth_args['divisible_by'] = divisible_by
+  print('The depth_multplier value after reduction:',depth_multiplier)
 
   with slim.arg_scope((lib.depth_multiplier,), **depth_args):
     return lib.mobilenet(
@@ -203,7 +204,7 @@ mobilenet_v2_035 = wrapped_partial(mobilenet, depth_multiplier=0.35,
 
 
 @slim.add_arg_scope
-def mobilenet_base(input_tensor, depth_multiplier=1.0, **kwargs):
+def mobilenet_base(input_tensor, depth_multiplier=0.50, **kwargs):
   """Creates base of the mobilenet (no pooling and no logits) ."""
   return mobilenet(input_tensor,
                    depth_multiplier=depth_multiplier,
@@ -211,7 +212,7 @@ def mobilenet_base(input_tensor, depth_multiplier=1.0, **kwargs):
 
 
 @slim.add_arg_scope
-def mobilenet_base_group_norm(input_tensor, depth_multiplier=1.0, **kwargs):
+def mobilenet_base_group_norm(input_tensor, depth_multiplier=0.50, **kwargs):
   """Creates base of the mobilenet (no pooling and no logits) ."""
   kwargs['conv_defs'] = V2_DEF_GROUP_NORM
   kwargs['conv_defs']['defaults'].update({
