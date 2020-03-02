@@ -105,7 +105,7 @@ V2_DEF_GROUP_NORM['defaults'] = {
 
 @slim.add_arg_scope
 def mobilenet(input_tensor,
-              num_classes=1001,
+              num_classes=1,
               depth_multiplier=0.50,
               scope='MobilenetV2',
               conv_defs=None,
@@ -183,6 +183,8 @@ def mobilenet(input_tensor,
         scope=scope,
         multiplier=depth_multiplier,
         **kwargs)
+print('The param depth', depth_multiplier)
+print('The param num_classes',num_classes)
 
 mobilenet.default_image_size = 224
 
@@ -206,6 +208,7 @@ mobilenet_v2_035 = wrapped_partial(mobilenet, depth_multiplier=0.35,
 @slim.add_arg_scope
 def mobilenet_base(input_tensor, depth_multiplier=0.50, **kwargs):
   """Creates base of the mobilenet (no pooling and no logits) ."""
+  print('Creating BaseNet',depth_multiplier)
   return mobilenet(input_tensor,
                    depth_multiplier=depth_multiplier,
                    base_only=True, **kwargs)
