@@ -38,7 +38,7 @@ _MOBILENET_V3_SMALL_FINAL_ENDPOINT = 'layer_13'
 
 
 def _mobilenet_v2(net,
-                  depth_multiplier,
+                  depth_multiplier=0.5,
                   output_stride,
                   conv_defs=None,
                   divisible_by=None,
