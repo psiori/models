@@ -183,8 +183,8 @@ def mobilenet(input_tensor,
         scope=scope,
         multiplier=depth_multiplier,
         **kwargs)
-print('The param depth', depth_multiplier)
-print('The param num_classes',num_classes)
+  print('The param depth', depth_multiplier)
+  print('The param num_classes',num_classes)
 
 mobilenet.default_image_size = 224
 
