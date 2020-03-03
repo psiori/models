@@ -38,7 +38,7 @@ _MOBILENET_V3_SMALL_FINAL_ENDPOINT = 'layer_13'
 
 
 def _mobilenet_v2(net,
-                  depth_multiplier=0.5,
+                  depth_multiplier=0.25,
                   output_stride,
                   conv_defs=None,
                   divisible_by=None,
@@ -508,7 +508,7 @@ def mean_pixel(model_variant=None):
 def extract_features(images,
                      output_stride=8,
                      multi_grid=None,
-                     depth_multiplier=1.0,
+                     depth_multiplier=0.25,
                      divisible_by=None,
                      final_endpoint=None,
                      model_variant=None,
