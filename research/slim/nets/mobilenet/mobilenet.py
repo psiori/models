@@ -151,7 +151,7 @@ def safe_arg_scope(funcs, **kwargs):
 def mobilenet_base(  # pylint: disable=invalid-name
     inputs,
     conv_defs,
-    multiplier=0.50,
+    multiplier=0.25,
     final_endpoint=None,
     output_stride=None,
     use_explicit_padding=False,
