@@ -320,10 +320,10 @@ def write_saved_model(saved_model_path,
 
       builder.add_meta_graph_and_variables(
           sess,
-          [tf.saved_model.tag_constants.SERVING],
+          [tf.saved_model.tag_constants.TRAINING],
           signature_def_map={
               tf.saved_model.signature_constants
-              .DEFAULT_SERVING_SIGNATURE_DEF_KEY:
+              .DEFAULT_TRAINING_SIGNATURE_DEF_KEY:
                   detection_signature,
           },
       )
