@@ -183,6 +183,14 @@ def mobilenet(input_tensor,
         scope=scope,
         multiplier=depth_multiplier,
         **kwargs)
+  total_parameters = 0
+  for variable in tf.trainable_variables():  
+        local_parameters=1
+	    shape = variable.get_shape()  #getting shape of a variable
+        for i in shape:
+    	    local_parameters*=i.value  #mutiplying dimension values
+	    total_parameters+=local_parameters
+  print('Total number of parameters:' ,total_parameters) 
   print('The param depth multiplier:', depth_multiplier)
   print('The param num_classes:',num_classes)
 
