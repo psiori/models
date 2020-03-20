@@ -204,6 +204,7 @@ class KerasMultiResolutionFeatureMaps(tf.keras.Model):
     self.convolutions = []
 
     depth_fn = get_depth_fn(depth_multiplier, min_depth)
+    print('Debugging the depth_fn value:', depth_fn)
 
     base_from_layer = ''
     use_explicit_padding = False
