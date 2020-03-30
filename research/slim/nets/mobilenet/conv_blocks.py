@@ -219,6 +219,7 @@ def expanded_conv(input_tensor,
                   split_divisible_by=8,
                   expansion_transform=None,
                   depthwise_location='expansion',
+                  # depthwise_channel_multiplier: depthwise channel multiplier: each input will replicated (with different filters) that many times.
                   depthwise_channel_multiplier=1,
                   endpoints=None,
                   use_explicit_padding=False,

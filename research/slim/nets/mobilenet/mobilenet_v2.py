@@ -221,7 +221,6 @@ def mobilenet_base_group_norm(input_tensor, depth_multiplier=0.25, **kwargs):
           'groups': kwargs.pop('groups', 8)
       }
   })
-  print('The depth multiplier to create the mobilenet with is:', depth_multiplier)
   return mobilenet(
       input_tensor, depth_multiplier=depth_multiplier, base_only=True, **kwargs)
 

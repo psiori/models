@@ -49,9 +49,8 @@ def get_depth_fn(depth_multiplier, min_depth):
   """
   def multiply_depth(depth):
     new_depth = int(depth * depth_multiplier)
-    print('The resutl of maximization', max(new_depth, min_depth))
-    return max(new_depth, min_depth)
-  print('multiply_depth in feature extractor', multiply_depth)
+    #return max(new_depth, min_depth)
+    return new_depth
   return multiply_depth
 
 
@@ -409,7 +408,6 @@ def multi_resolution_feature_maps(feature_map_layout, depth_multiplier,
       as specified.
   """
   depth_fn = get_depth_fn(depth_multiplier, min_depth)
-  print('depth_fn in multi_resolution_feature_maps', depth_fn)
 
   feature_map_keys = []
   feature_maps = []

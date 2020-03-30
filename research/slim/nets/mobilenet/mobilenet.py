@@ -64,10 +64,13 @@ def _fixed_padding(inputs, kernel_size, rate=1):
 def _make_divisible(v, divisor, min_value=None):
   if min_value is None:
     min_value = divisor
-  new_v = max(min_value, int(v + divisor / 2) // divisor * divisor)
+  computation= int(v + divisor / 2) // divisor * divisor
+  new_v = max(min_value, computation)
+  print('the new after max', new_v)
   # Make sure that round down does not go down by more than 10%.
   if new_v < 0.9 * v:
     new_v += divisor
+  print('the _make_div new_v',new_v)
   return int(new_v)
 
 
@@ -104,16 +107,21 @@ def depth_multiplier(output_params,
   if 'num_outputs' not in output_params:
     return
   d = output_params['num_outputs']
+  print('the original num_output',d)
   output_params['num_outputs'] = _make_divisible(d * multiplier, divisible_by,
                                                  min_depth)
+  d = output_params['num_outputs']
+  print('the num output after the depth multiplier',d)
 
 
 _Op = collections.namedtuple('Op', ['op', 'params', 'multiplier_func'])
 
 
 def op(opfunc, multiplier_func=depth_multiplier, **params):
+  #import pdb; pdb.set_trace()
   multiplier = params.pop('multiplier_transform', multiplier_func)
-  return _Op(opfunc, params=params, multiplier_func=multiplier)
+
+  return _Op(opfunc, params=params, multiplier_func=depth_multiplier)
 
 
 class NoOpScope(object):
