@@ -43,7 +43,9 @@ squeeze_excite = functools.partial(
 # both expansion and input tensor.
 _se4 = lambda expansion_tensor, input_tensor: squeeze_excite(expansion_tensor)
 
-
+''''
+activation function
+'''
 def hard_swish(x):
   with tf.compat.v1.name_scope('hard_swish'):
     return x * tf.nn.relu6(x + np.float32(3)) * np.float32(1. / 6.)
