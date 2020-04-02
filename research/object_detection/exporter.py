@@ -279,6 +279,48 @@ def add_output_tensor_nodes(postprocessed_tensors,
 
   return outputs
 
+def _write_saved_model(saved_model_path,
+                       trained_checkpoint_prefix,
+                       inputs,
+                       outputs):
+  """Writes SavedModel to disk.
+  This method uses the loaded graph into environment instead of initializing frozen graph
+  Args:
+    saved_model_path: Path to write SavedModel.
+    trained_checkpoint_prefix: path to trained_checkpoint_prefix.
+    inputs: The input image tensor to use for detection.
+    outputs: A tensor dictionary containing the outputs of a DetectionModel.
+  """
+  saver = tf.train.Saver()
+  with tf.Session() as sess:
+    saver.restore(sess, trained_checkpoint_prefix)
+    builder = tf.saved_model.builder.SavedModelBuilder(saved_model_path)
+
+    tensor_info_inputs = {
+          'inputs': tf.saved_model.utils.build_tensor_info(inputs)}
+    tensor_info_outputs = {}
+    for k, v in outputs.items():
+      tensor_info_outputs[k] = tf.saved_model.utils.build_tensor_info(v)
+
+    detection_signature = (
+        tf.saved_model.signature_def_utils.build_signature_def(
+            inputs=tensor_info_inputs,
+            outputs=tensor_info_outputs,
+            method_name=tf.saved_model.signature_constants.PREDICT_METHOD_NAME
+        ))
+
+    builder.add_meta_graph_and_variables(
+          sess, [tf.saved_model.tag_constants.SERVING],
+        signature_def_map={
+            tf.saved_model.signature_constants
+                .DEFAULT_SERVING_SIGNATURE_DEF_KEY:
+                detection_signature,
+        },
+    )
+    builder.save()
+
+
+
 
 def write_saved_model(saved_model_path,
                       frozen_graph_def,
@@ -323,7 +365,7 @@ def write_saved_model(saved_model_path,
           [tf.saved_model.tag_constants.TRAINING],
           signature_def_map={
               tf.saved_model.signature_constants
-              .DEFAULT_SERVING_DEF_KEY:
+              .DEFAULT_SERVING_SIGNATURE_DEF_KEY:
                   detection_signature,
           },
       )
@@ -462,7 +504,10 @@ def _export_inference_graph(input_type,
       clear_devices=True,
       initializer_nodes='')
 
-  write_saved_model(saved_model_path, frozen_graph_def,
+  # remove the comment from this line if you want to export frozen graph.
+  #write_saved_model(saved_model_path, frozen_graph_def,
+  #                  placeholder_tensor, outputs)
+  _write_saved_model(saved_model_path, trained_checkpoint_prefix,
                     placeholder_tensor, outputs)
 
 
