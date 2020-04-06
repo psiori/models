@@ -68,7 +68,7 @@ V2_DEF = dict(
         #op(ops.expanded_conv, stride=1, num_outputs=32),
         op(ops.expanded_conv, stride=1, num_outputs=32),
         op(ops.expanded_conv, stride=2, num_outputs=64),
-        op(ops.expanded_conv, stride=1, num_outputs=64),
+       # op(ops.expanded_conv, stride=1, num_outputs=64),
         op(ops.expanded_conv, stride=1, num_outputs=64),
         #op(ops.expanded_conv, stride=1, num_outputs=64),
         op(ops.expanded_conv, stride=1, num_outputs=96),
