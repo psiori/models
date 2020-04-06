@@ -126,7 +126,7 @@ class SSDMobileNetV2FeatureExtractor(ssd_meta_arch.SSDFeatureExtractor):
               context_manager.IdentityContextManager()):
           _, image_features = mobilenet_v2.mobilenet_base(
               ops.pad_to_multiple(preprocessed_inputs, self._pad_to_multiple),
-              final_endpoint='layer_19',
+              final_endpoint='layer_14',
               depth_multiplier=self._depth_multiplier,
               use_explicit_padding=self._use_explicit_padding,
               scope=scope)
