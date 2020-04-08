@@ -508,7 +508,7 @@ def mean_pixel(model_variant=None):
 def extract_features(images,
                      output_stride=8,
                      multi_grid=None,
-                     depth_multiplier=0.25,
+                     depth_multiplier=1.0,
                      divisible_by=None,
                      final_endpoint=None,
                      model_variant=None,
