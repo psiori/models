@@ -40,7 +40,7 @@ class SSDMobileNetV2FeatureExtractor(ssd_meta_arch.SSDFeatureExtractor):
                conv_hyperparams_fn,
                reuse_weights=None,
                use_explicit_padding=False,
-               use_depthwise=False,
+               use_depthwise=True,
                num_layers=6,
                override_base_feature_extractor_hyperparams=False):
     """MobileNetV2 Feature Extractor for SSD Models.
@@ -74,7 +74,7 @@ class SSDMobileNetV2FeatureExtractor(ssd_meta_arch.SSDFeatureExtractor):
         conv_hyperparams_fn=conv_hyperparams_fn,
         reuse_weights=reuse_weights,
         use_explicit_padding=use_explicit_padding,
-        use_depthwise=use_depthwise,
+        use_depthwise=True,
         num_layers=num_layers,
         override_base_feature_extractor_hyperparams=
         override_base_feature_extractor_hyperparams)
