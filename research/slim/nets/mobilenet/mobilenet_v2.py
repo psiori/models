@@ -50,7 +50,7 @@ V2_DEF = dict(
             'normalizer_fn': slim.batch_norm, 'activation_fn': tf.nn.relu6
         },
         (ops.expanded_conv,): {
-            'expansion_size': expand_input(6),
+            'expansion_size': expand_input(3),
             'split_expansion': 1,
             'normalizer_fn': slim.batch_norm,
             'residual': True
@@ -92,7 +92,7 @@ V2_DEF_GROUP_NORM['defaults'] = {
         'activation_fn': tf.nn.relu6,  # pylint: disable=C0330
     },  # pylint: disable=C0330
     (ops.expanded_conv,): {
-        'expansion_size': ops.expand_input_by_factor(6),
+        'expansion_size': ops.expand_input_by_factor(3),
         'split_expansion': 1,
         'normalizer_fn': contrib_layers.group_norm,
         'residual': True
