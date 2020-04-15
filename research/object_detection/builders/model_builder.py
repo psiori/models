@@ -188,6 +188,10 @@ def _build_ssd_feature_extractor(feature_extractor_config,
           override_base_feature_extractor_hyperparams
   }
 
+  if depth_multiplier not in [0.25,0.50]:
+      raise ValueError('Wrong depth_multiplier value, provide either 0.25 or 0.5. {}'.format(
+          depth_multiplier))
+
   if feature_extractor_config.HasField('replace_preprocessor_with_placeholder'):
     kwargs.update({
         'replace_preprocessor_with_placeholder':
