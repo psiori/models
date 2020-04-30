@@ -109,7 +109,7 @@ class SSDMobileNetV2FeatureExtractor(ssd_meta_arch.SSDFeatureExtractor):
         33, preprocessed_inputs)
 
     feature_map_layout = {
-        'from_layer': ['layer_11/expansion_output', 'layer_14', '', '', '', ''
+        'from_layer': ['layer_6/expansion_output', 'layer_9', '', '', '', ''
                       ][:self._num_layers],
         'layer_depth': [-1, -1, 512, 256, 256, 128][:self._num_layers],
         'use_depthwise': self._use_depthwise,
@@ -126,7 +126,7 @@ class SSDMobileNetV2FeatureExtractor(ssd_meta_arch.SSDFeatureExtractor):
               context_manager.IdentityContextManager()):
           _, image_features = mobilenet_v2.mobilenet_base(
               ops.pad_to_multiple(preprocessed_inputs, self._pad_to_multiple),
-              final_endpoint='layer_14',
+              final_endpoint='layer_9',
               depth_multiplier=self._depth_multiplier,
               use_explicit_padding=self._use_explicit_padding,
               scope=scope)
