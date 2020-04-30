@@ -155,6 +155,10 @@ def mobilenet(input_tensor,
   if 'multiplier' in kwargs:
     raise ValueError('mobilenetv2 doesn\'t support generic '
                      'multiplier parameter use "depth_multiplier" instead.')
+  if depth_multiplier not in [0.25 , 0.50, 1.0]:
+      raise ValueError('Wrong depth_multiplier {} , provide either 0.25, 0.5 or 1.0'.format(
+          depth_multiplier))
+
   if finegrain_classification_mode:
     conv_defs = copy.deepcopy(conv_defs)
     if depth_multiplier < 1:
@@ -173,7 +177,6 @@ def mobilenet(input_tensor,
     depth_args['min_depth'] = min_depth
   if divisible_by is not None:
     depth_args['divisible_by'] = divisible_by
-  print('The depth_multplier value after reduction:',depth_multiplier)
 
   with slim.arg_scope((lib.depth_multiplier,), **depth_args):
     return lib.mobilenet(
