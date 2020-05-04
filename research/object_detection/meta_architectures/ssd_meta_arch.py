@@ -48,7 +48,7 @@ class SSDFeatureExtractor(object):
                reuse_weights=None,
                use_explicit_padding=False,
                use_depthwise=True,
-               num_layers=6,
+               num_layers=2,
                override_base_feature_extractor_hyperparams=False):
     """Constructor.
 
