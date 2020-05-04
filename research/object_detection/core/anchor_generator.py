@@ -102,6 +102,8 @@ class AnchorGenerator(six.with_metaclass(ABCMeta, object)):
     """
     if self.check_num_anchors and (
         len(feature_map_shape_list) != len(self.num_anchors_per_location())):
+      print('Len of feature_map {}'.format(len(feature_map_shape_list) ))
+      print('Len of num_anchor {}'.format(len(self.num_anchors_per_location())))
       raise ValueError('Number of feature maps is expected to equal the length '
                        'of `num_anchors_per_location`.')
     with tf.name_scope(self.name_scope()):
