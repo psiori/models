@@ -154,7 +154,7 @@ class SSDKerasFeatureExtractor(tf.keras.Model):
                inplace_batchnorm_update,
                use_explicit_padding=False,
                use_depthwise=False,
-               num_layers=6,
+               num_layers=2,
                override_base_feature_extractor_hyperparams=False,
                name=None):
     """Constructor.
