@@ -110,8 +110,8 @@ class SSDMobileNetV2FeatureExtractor(ssd_meta_arch.SSDFeatureExtractor):
 
     feature_map_layout = {
         'from_layer': ['layer_6/expansion_output', 'layer_9', '', '', '', ''
-                      ][:self._num_layers],
-        'layer_depth': [-1, -1, 512, 256, 256, 128][:self._num_layers],
+                      ][:2],
+        'layer_depth': [-1, -1, 512, 256, 256, 128][:2],
         'use_depthwise': self._use_depthwise,
         'use_explicit_padding': self._use_explicit_padding,
     }
