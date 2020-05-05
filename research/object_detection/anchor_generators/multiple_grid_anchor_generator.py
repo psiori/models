@@ -250,7 +250,7 @@ class MultipleGridAnchorGenerator(anchor_generator.AnchorGenerator):
     return anchor_grid_list
 
 
-def create_ssd_anchors(num_layers=6,
+def create_ssd_anchors(num_layers=2,
                        min_scale=0.2,
                        max_scale=0.95,
                        scales=None,
