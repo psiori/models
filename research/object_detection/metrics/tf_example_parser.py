@@ -48,8 +48,7 @@ class StringParser(data_parser.DataToNumpyParser):
                    .bytes_list.value) if tf_example.features.feature[
                        self.field_name].HasField("bytes_list") else None
   '''''
-  
-  class StringParser(data_parser.DataToNumpyParser):
+class StringParser(data_parser.DataToNumpyParser):
   """Tensorflow Example string parser."""
 
   def __init__(self, field_name):
