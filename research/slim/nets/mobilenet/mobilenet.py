@@ -108,8 +108,9 @@ def depth_multiplier(output_params,
     return
   d = output_params['num_outputs']
   print('the original num_output',d)
-  output_params['num_outputs'] = _make_divisible(d * multiplier, divisible_by,min_depth)
-  #output_params['num_outputs'] = d * multiplier
+  #output_params['num_outputs'] = _make_divisible(d * multiplier, divisible_by,min_depth)
+  # Change here to neglect the usage of a min_depth
+  output_params['num_outputs'] = d * multiplier
 
   print('the num output after the depth multiplier',output_params['num_outputs'])
 
